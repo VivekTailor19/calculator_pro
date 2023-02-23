@@ -7,7 +7,6 @@ class UI_Calculaor extends StatefulWidget {
   State<UI_Calculaor> createState() => _UI_CalculaorState();
 }
 
-
 double? output  ;
 int? input ;
 String value = "";
@@ -34,9 +33,7 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                   SizedBox(height: 20,),
                   Text("$output",style: TextStyle(fontSize: 40),),
                 ],
-
               ),
-
             ),
             Container(
               height: 500,
@@ -68,13 +65,10 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                         Expanded(child: InkWell(onTap: (){
                           setState(() {
 
-
-
                             first = double.parse(value) ;
                             sign = "%";
                             input = 5;
                             value = "";
-
                           });
                         },
                             child: Button_Color("%", Color(0xff929292)))),    //     %
