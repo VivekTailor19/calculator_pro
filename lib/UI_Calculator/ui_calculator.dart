@@ -7,7 +7,7 @@ class UI_Calculaor extends StatefulWidget {
   State<UI_Calculaor> createState() => _UI_CalculaorState();
 }
 
-double? output  ;
+double output = 0  ;
 int? input ;
 String value = "";
 double first = 0 ;
@@ -29,7 +29,7 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
               alignment: Alignment.bottomRight,
               child: Column(
                 children: [
-                  Text("$value",style: TextStyle(fontSize: 60),),
+                  Text("$value",style: TextStyle(fontSize: 40),),
                   SizedBox(height: 20,),
                   Text("$output",style: TextStyle(fontSize: 40),),
                 ],
@@ -46,20 +46,26 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                     child: Row(
                       //crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        InkWell(onTap: () {
-                          setState(() {
-                            value = "";
-                            output = 0;
-                          },);
-                        },
-                          child: Container(
-                            height: 50,
-                            width: 200,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                               // border: Border.all(color: Colors.green),
-                                color: Color(0xffFF5A66),borderRadius: BorderRadius.all(Radius.circular(25)) ),
-                            child: Text("AC",style: TextStyle(color: Colors.white,fontSize: 25),),),
+                        Expanded(
+                          flex:2,
+                          child: InkWell(onTap: () {
+                            setState(() {
+                              value = "";
+                              output = 0;
+                            },);
+                          },
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Container(
+                                height: 50,
+                                width: 200,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                   // border: Border.all(color: Colors.green),
+                                    color: Color(0xffFF5A66),borderRadius: BorderRadius.all(Radius.circular(25)) ),
+                                child: Text("AC",style: TextStyle(color: Colors.white,fontSize: 25),),),
+                            ),
+                          ),
                         ), //     AC
 
                         Expanded(child: InkWell(onTap: (){
