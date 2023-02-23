@@ -6,7 +6,10 @@ class UI_Calculaor extends StatefulWidget {
   @override
   State<UI_Calculaor> createState() => _UI_CalculaorState();
 }
-dynamic value = 0;
+
+String syntax = "";
+dynamic value = "";
+
 class _UI_CalculaorState extends State<UI_Calculaor> {
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,14 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
             Container(
               height: 250,
               color: Colors.lightBlueAccent,
+              child: Column(
+                children: [
+                  Text("$syntax"),
+                  Text("$value"),
+                ],
+
+              ),
+
             ),
             Container(
               height: 500,
@@ -34,6 +45,7 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                         Container(
                           height: 50,
                           width: 200,
+
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                              // border: Border.all(color: Colors.green),
@@ -58,25 +70,25 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                             [
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = 7;
+                                  value = value +  "7";
                                 });
                               },
                                   child: Number_Color("7",Alignment.center))),
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = 4;
+                                  value = value +  "4";
                                 });
                               },
                                   child: Number_Color("4",Alignment.center))),
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = 1;
+                                  value = value +  "1";
                                 });
                               },
                                   child: Number_Color("1",Alignment.center))),
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = 00;
+                                  value = value +  "00";
                                 });
                               },
                                   child: Number_Color("00",Alignment.center))),
@@ -89,25 +101,25 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                               [
                                 Expanded(child: InkWell(onTap: () {
                                   setState(() {
-                                    value = 8;
+                                    value = value +  "8";
                                   });
                                 },
                                     child: Number_Color("8",Alignment.center))),
                                 Expanded(child: InkWell(onTap: () {
                                   setState(() {
-                                    value = 5;
+                                    value = value +  "5";
                                   });
                                 },
                                     child: Number_Color("5",Alignment.center))),
                                 Expanded(child: InkWell(onTap: () {
                                   setState(() {
-                                    value = 2;
+                                    value = value +  "2";
                                   });
                                 },
                                     child: Number_Color("2",Alignment.center))),
                                 Expanded(child: InkWell(onTap: () {
                                   setState(() {
-                                    value = 0;
+                                    value = value +  "0";
                                   });
                                 },
                                     child: Number_Color("0",Alignment.center))),
@@ -121,25 +133,25 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                             [
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = 9;
+                                  value = value +  "9";
                                 });
                               },
                                   child: Number_Color("9",Alignment.center))),
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = 6;
+                                  value = value +  "6";
                                 });
                               },
                                   child: Number_Color("6",Alignment.center))),
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = 3;
+                                  value = value +  "3";
                                 });
                               },
                                   child: Number_Color("3",Alignment.center))),
                               Expanded(child: InkWell(onTap: () {
                                 setState(() {
-                                  value = ".";
+                                  value =  value + "." ;
                                 });
                               },
                                   child: Number_Color(".",Alignment.center))),
