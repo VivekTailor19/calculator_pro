@@ -7,10 +7,13 @@ class UI_Calculaor extends StatefulWidget {
   State<UI_Calculaor> createState() => _UI_CalculaorState();
 }
 
-double? output  ;
-dynamic value = 0;
+
+double output = 0  ;
+int? input ;
+String value = "";
 double first = 0 ;
 double last = 0 ;
+String sign = "" ;
 
 class _UI_CalculaorState extends State<UI_Calculaor> {
   @override
@@ -45,27 +48,41 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                     child: Row(
                       //crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Container(
-                          height: 50,
-                          width: 200,
-
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                             // border: Border.all(color: Colors.green),
-                              color: Color(0xffFF5A66),borderRadius: BorderRadius.all(Radius.circular(25)) ),
-                          child: Text("AC",style: TextStyle(color: Colors.white,fontSize: 25),),),
-
-                        Expanded(child: InkWell(onTap: () {
+                        InkWell(onTap: () {
                           setState(() {
-                            value = value +  "%";
-                            //output = ( first % last ) ;
+                            value = "";
+                            output = 0;
+                          },);
+                        },
+                          child: Container(
+                            height: 50,
+                            width: 200,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                               // border: Border.all(color: Colors.green),
+                                color: Color(0xffFF5A66),borderRadius: BorderRadius.all(Radius.circular(25)) ),
+                            child: Text("AC",style: TextStyle(color: Colors.white,fontSize: 25),),),
+                        ), //     AC
+
+                        Expanded(child: InkWell(onTap: (){
+                          setState(() {
+
+                            first = double.parse(value) ;
+                            sign = "%";
+                            input = 5;
+                            value = "";
+
                           });
                         },
-                            child: Button_Color("%", Color(0xff929292)))),
-                        Expanded(child: InkWell(onTap: () {
+                            child: Button_Color("%", Color(0xff929292)))),    //     %
+                        Expanded(child: InkWell(onTap: (){
                           setState(() {
-                            value = value +  "/";
-                            //output = ( first + last ) ;
+
+                            first = double.parse(value) ;
+                            sign = "/";
+                            input = 4;
+                            value = "";
+
                           });
                         },
                             child: Button_Color("/", Color(0xffFF5A66)))),
@@ -179,22 +196,34 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                             [
                              Expanded(child: InkWell(onTap: (){
                                setState(() {
-                                 value = value +  "*";
-                                 //output = ( first * last ) ;
+
+                                 first = double.parse(value) ;
+                                 sign = "*";
+                                 input = 1;
+                                 value = "";
+
                                });
                              },
-                                 child: Button_Color("-", Color(0xffFF5A66)))),
+                                 child: Button_Color("*", Color(0xffFF5A66)))),
                               Expanded(child: InkWell(onTap: (){
                                 setState(() {
-                                  value = value +  "-";
-                                 // output = ( first - last ) ;
+
+                                  first = double.parse(value) ;
+                                  sign = "-";
+                                  input = 2;
+                                  value = "";
+
                                 });
                               },
                                   child: Button_Color("-", Color(0xffFF5A66)))),
                               Expanded(child: InkWell(onTap: (){
                                 setState(() {
-                                  value = value +  "+";
-                                  //output = ( first + last ) ;
+
+                                  first = double.parse(value) ;
+                                  sign = "+";
+                                  input = 3;
+                                  value = "";
+
                                 });
                               },
                                   child: Button_Color("+", Color(0xffFF5A66)))),
@@ -202,10 +231,38 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                               Expanded(
                                 child: InkWell(
                                   onTap: (){
-
                                     setState(() {
+                                      last = double.parse(value) ;
+                                      switch(input)
+                                      {
+                                        case 1:
+                                          {
+                                            output =  first * last ;
+                                            break;
+                                          }
+                                        case 2:
+                                          {
+                                            output =  first - last ;
+                                            break;
+                                          }
+                                        case 3:
+                                          {
+                                            output =  first + last ;
+                                            break;
+                                          }
+                                        case 4:
+                                          {
+                                            output =  first / last ;
+                                            break;
+                                          }
+                                        case 5:
+                                          {
+                                            output =  first % last ;
+                                            break;
+                                          }
+                                      }
 
-
+                                      value = first.toString() + sign + last.toString();
                                     });
                                   },
                                   child: Container(
