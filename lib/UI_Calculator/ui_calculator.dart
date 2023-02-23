@@ -7,8 +7,10 @@ class UI_Calculaor extends StatefulWidget {
   State<UI_Calculaor> createState() => _UI_CalculaorState();
 }
 
-String syntax = "";
-dynamic value = "";
+double? output  ;
+dynamic value = 0;
+double first = 0 ;
+double last = 0 ;
 
 class _UI_CalculaorState extends State<UI_Calculaor> {
   @override
@@ -22,10 +24,11 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
             Container(
               height: 250,
               color: Colors.lightBlueAccent,
+              alignment: Alignment.bottomRight,
               child: Column(
                 children: [
-                  Text("$syntax"),
-                  Text("$value"),
+                  Text("$output",style: TextStyle(fontSize: 40),),
+                  Text("$value",style: TextStyle(fontSize: 60),),
                 ],
 
               ),
@@ -52,8 +55,20 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                               color: Color(0xffFF5A66),borderRadius: BorderRadius.all(Radius.circular(25)) ),
                           child: Text("AC",style: TextStyle(color: Colors.white,fontSize: 25),),),
 
-                        Expanded(child: Button_Color("%", Color(0xff929292))),
-                        Expanded(child: Button_Color("/", Color(0xffFF5A66))),
+                        Expanded(child: InkWell(onTap: () {
+                          setState(() {
+                            value = value +  "%";
+                            //output = ( first % last ) ;
+                          });
+                        },
+                            child: Button_Color("%", Color(0xff929292)))),
+                        Expanded(child: InkWell(onTap: () {
+                          setState(() {
+                            value = value +  "/";
+                            //output = ( first + last ) ;
+                          });
+                        },
+                            child: Button_Color("/", Color(0xffFF5A66)))),
                       ],
                     ),
                   ), // First Row AC % /
@@ -162,22 +177,49 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children:
                             [
-                             Expanded(child: Button_Color("*", Color(0xffFF5A66))),
-                              Expanded(child: Button_Color("-", Color(0xffFF5A66))),
-                              Expanded(child: Button_Color("+", Color(0xffFF5A66))),
+                             Expanded(child: InkWell(onTap: (){
+                               setState(() {
+                                 value = value +  "*";
+                                 //output = ( first * last ) ;
+                               });
+                             },
+                                 child: Button_Color("-", Color(0xffFF5A66)))),
+                              Expanded(child: InkWell(onTap: (){
+                                setState(() {
+                                  value = value +  "-";
+                                 // output = ( first - last ) ;
+                                });
+                              },
+                                  child: Button_Color("-", Color(0xffFF5A66)))),
+                              Expanded(child: InkWell(onTap: (){
+                                setState(() {
+                                  value = value +  "+";
+                                  //output = ( first + last ) ;
+                                });
+                              },
+                                  child: Button_Color("+", Color(0xffFF5A66)))),
+
                               Expanded(
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      //border: Border.all(color: Colors.green),
-                                      shape: BoxShape.circle,color: Color(0xffFF5A66)),
-                                  child: Text("=",style: TextStyle(color: Colors.white,fontSize: 25),),),
+                                child: InkWell(
+                                  onTap: (){
+
+                                    setState(() {
+
+
+                                    });
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                        //border: Border.all(color: Colors.green),
+                                        shape: BoxShape.circle,color: Color(0xffFF5A66)),
+                                    child: Text("=",style: TextStyle(color: Colors.white,fontSize: 25),),),
+                                ),
                               ),
 
 
-                              
                             ],),
                           ),  // * - + =
                         ],
