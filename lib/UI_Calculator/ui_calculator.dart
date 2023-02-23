@@ -8,7 +8,7 @@ class UI_Calculaor extends StatefulWidget {
 }
 
 
-double output = 0  ;
+double? output  ;
 int? input ;
 String value = "";
 double first = 0 ;
@@ -30,8 +30,9 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
               alignment: Alignment.bottomRight,
               child: Column(
                 children: [
-                  Text("$output",style: TextStyle(fontSize: 40),),
                   Text("$value",style: TextStyle(fontSize: 60),),
+                  SizedBox(height: 20,),
+                  Text("$output",style: TextStyle(fontSize: 40),),
                 ],
 
               ),
@@ -66,6 +67,8 @@ class _UI_CalculaorState extends State<UI_Calculaor> {
 
                         Expanded(child: InkWell(onTap: (){
                           setState(() {
+
+
 
                             first = double.parse(value) ;
                             sign = "%";
